@@ -10,7 +10,27 @@
 </head> 
 
 <body>
-    
+    <div class="container">
+        <h1>National Parks Service search:</h1>
+        <form id="js-nps-form">
+            <label for="nps-form">State(s):</label>
+            <input type="text" name="nps-form" id="js-nps-entry" placeholder="e.g. Colorado" required></br>
+
+            <label for="max-results">Max results to return:</label>
+            <input type="number" name="max-results" id="js-max-results" value="10">
+        
+            <input type="submit" value="Go!">
+        </form>
+
+    <p id="js-error-message" class="error-message"></p>
+
+    <section id="results-parks" class="hidden">
+        <h2>Search results</h2>
+        <ul id="results-list">
+        </ul>
+    </section>
+    </div>
+
 
 
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/cuid/1.3.8/browser-cuid.min.js"></script>
