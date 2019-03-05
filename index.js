@@ -12,7 +12,7 @@ function formatQueryParams(params){
     .map(key => { 
       let value = params[key];
       if (Array.isArray(value)){
-      value = `${(value).join(`&${encodeURIComponent(key)}=`)}`;
+        value = `${(value).join(`&${encodeURIComponent(key)}=`)}`;
       }
       else {
         value = encodeURIComponent(value);
@@ -37,6 +37,7 @@ function displayResults(responseJson, limit) {
       </li>`
     );
   }
+  
   $('#results-parks').removeClass('hidden');
 }
 
@@ -84,29 +85,3 @@ function watchForm(){
 }
 
 $(watchForm);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
