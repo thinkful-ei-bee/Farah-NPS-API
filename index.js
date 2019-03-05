@@ -9,7 +9,16 @@ function formatQueryParams(params){
   //create array of the keys in the "params" object
   const queryItems = Object.keys(params)
     // for each of the keys in the array, create a string w/ the key and the key's value in the "params" object
-    .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`);
+    .map(key => { 
+      let value = params[key];
+      if (Array.isArray(value)){
+      value = `${(value).join(`&${encodeURIComponent(key)}=`)}`;
+      }
+      else {
+        value = encodeURIComponent(value);
+      }
+      return `${encodeURIComponent(key)}=${(value)}`;
+    });
   //return a string of the keys and values, separated by "&"
   return queryItems.join('&');
 }
@@ -23,6 +32,7 @@ function displayResults(responseJson, limit) {
     $('#results-list').append(
       `<li>
         <h3><a href="${responseJson.data[i].url}">${responseJson.data[i].name}</a></h3>
+      
         <p>${responseJson.data[i].description}</p>
       </li>`
     );
@@ -30,11 +40,12 @@ function displayResults(responseJson, limit) {
   $('#results-parks').removeClass('hidden');
 }
 
-function getParks(query, limit=10){
+function getParks(query, stateCode, limit=10){
   const params = {
     api_key: apiKey,
+    stateCode,
     q: query,
-    limit
+    limit,
   };
   const queryString = formatQueryParams(params);
   const url = searchURL + '?' + queryString;
@@ -67,7 +78,8 @@ function watchForm(){
     //capture value of user input
     const searchTerm = $('#js-nps-entry').val();
     const limit = $('#js-max-results').val();
-    getParks(searchTerm, limit);
+
+    getParks('', searchTerm.split(', '), limit);
   });
 }
 
