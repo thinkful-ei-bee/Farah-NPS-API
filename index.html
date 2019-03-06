@@ -1,25 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>NPS-API</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
-    <link rel="stylesheet" href="index.css">
+    <link href="index.css" rel="stylesheet" type="text/css" />
 </head> 
 
 <body>
     <div class="container">
         <h1>National Parks Service search:</h1>
         <form id="js-nps-form">
-            <label for="nps-form">State(s):</label>
-            <input type="text" name="nps-form" id="js-nps-entry" placeholder="e.g. Colorado" required></br>
+            <label class="state-search" for="nps-form">State(s):</label></br>
+            <input class="state-search" type="text" name="nps-form" id="js-nps-entry" placeholder="e.g. Colorado" required></br>
 
-            <label for="max-results">Max results to return:</label>
+            <label for="max-results">Max results to return:</label></br>
             <input type="number" name="max-results" id="js-max-results" value="10">
         
-            <input type="submit" value="Go!">
+            <input class="submit-button" type="submit" value="Go!">
         </form>
 
     <p id="js-error-message" class="error-message"></p>
@@ -33,8 +34,8 @@
 
 
 
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/cuid/1.3.8/browser-cuid.min.js"></script>
-    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cuid/1.3.8/browser-cuid.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="index.js"></script>
 </body>
 </html>
